@@ -75,4 +75,4 @@ class Conversation(object):
             if input:
                 self.brain.query(input, self.wxbot)
             else:
-                self.mic.say("什么,我没有听清?")
+                self.mic.say("抱歉我没有听清")

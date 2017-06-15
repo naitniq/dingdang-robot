@@ -265,9 +265,13 @@ class BaiduSTT(AbstractSTTEngine):
                 "cuid": str(get_mac())[:32],
                 "channel": 1}
         data = json.dumps(data)
-        r = requests.post('http://vop.baidu.com/server_api',
+        try:
+        	r = requests.post('http://vop.baidu.com/server_api',
                           data=data,
                           headers={'content-type': 'application/json'})
+        except requests.exceptions.RequestException:
+            self._logger.critical('Request failed.', exc_info=True)
+            return []
         try:
             r.raise_for_status()
             text = ''

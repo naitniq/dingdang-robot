@@ -228,14 +228,14 @@ class Mic:
     def activeListenToAllOptions(self, THRESHOLD=None, LISTEN=True,
                                  MUSIC=False):
         """
-            Records until a second of silence or times out after 12 seconds
+            Records until a second of silence or times out after 8 seconds
 
             Returns a list of the matching options or None
         """
 
         RATE = 16000
         CHUNK = 1024
-        LISTEN_TIME = 12
+        LISTEN_TIME = 8
 
         # check if no threshold provided
         if THRESHOLD is None:
@@ -267,7 +267,8 @@ class Mic:
                 average = sum(lastN) / float(len(lastN))
 
                 # TODO: 0.8 should not be a MAGIC NUMBER!
-                if average < THRESHOLD * 0.8:
+                #if average < THRESHOLD * 0.8: silence
+                if average < THRESHOLD*0.6:
                     break
             except Exception, e:
                 self._logger.warning(e)

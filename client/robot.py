@@ -65,6 +65,7 @@ class TulingRobot(AbstractRobot):
             url = "http://www.tuling123.com/openapi/api"
             userid = str(get_mac())[:32]
             body = {'key': self.tuling_key, 'info': msg, 'userid': userid}
+            logger.debug("requests tuling: %s", msg)
             r = requests.post(url, data=body)
             respond = json.loads(r.text)
             result = ''

@@ -91,7 +91,7 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return any(word in text for word in [u"听歌", u"音乐", u"播放", u"唱歌", u"唱首歌", u"歌单", u"榜单"])
+    return any(word in text for word in [u"听歌", u"音乐", u"播放", u"唱歌", u"首歌", u"歌单", u"榜单"])
 
 
 # The interesting part
